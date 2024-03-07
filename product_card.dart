@@ -26,7 +26,10 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Implement the logic to show the detailed view
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => DetailedCard(productCard: carList[0])),
+        );
       },
       child: Card(
         child: Column(
@@ -83,13 +86,14 @@ List<ProductCard> carList = [
     imageUrl3: 'https://yastatic.net/naydex/autoru/1UY5JP044/96dde5Vr4ND/b1ODDax8AgAsGDxsGIHEYDBFXERuHuo8baYDq0SzJgRipt46SrfJaTydBCF0Gk_iRWrwLj7DzxPeC3Mv0mhDU3kWV8h8ugABvF66rA5TEXK30tsXKcso9rEuDqbIvG_dbu9RadumnmztjJ-7d9GVu9-7Lia3Sx7MwVZt6kAxAkzkW4VDqGuNAWUDN2ceTcMr7gidib0TaDQzbItoyj3t3OlpkOCSaJm0Y80ZtiLYULtcda9j9U6fB0-TLi9Ad0WD5Q',
     description: 'Продаю Lada (ВАЗ) 2121 4x4, цвет фиолетовый, 2019 года выпуска, с пробегом 17 800 километров. В ПТС два собственника. Объем двигателя 1,7 литра, мощность 83 лошадиных силы. Автомобиль в отличном состоянии, не требует никаких дополнительных вложений. Без ДТП. Использовался исключительно не в городской среде, эксплуатируется крайне редко. Второй автомобиль. Готов ответить на все вопросы по телефону или при личной встрече. Звоните!',
     videoUrl: 'https://youtu.be/vuhvdBexD2U?si=Ek8qkj9j4qcoABSF',
-  )];
+  )
+];
 
 
-class detailedCard extends StatelessWidget {
+class DetailedCard extends StatelessWidget {
   final ProductCard productCard;
   
-  const detailedCard({
+  const DetailedCard({
     super.key,
     required this.productCard,
   });
@@ -98,10 +102,26 @@ class detailedCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Card(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(padding: EdgeInsets.all(8))
+        child: ListView(
+          scrollDirection: Axis.vertical,
+          padding: const EdgeInsets.all(8),
+          children: <Widget>[
+            Text(productCard.title),
+            ListView(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.all(8),
+              children: [
+                Image.network(productCard.imageUrl1),
+                Image.network(productCard.imageUrl2),
+                Image.network(productCard.imageUrl3)
+              ],
+            ),
+            SingleChildScrollView(
+              child: Text(
+                productCard.description,
+                style: const TextStyle(fontSize: 16, color: Colors.black54)
+              ),
+            ),
           ],
         ),
       ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application4/product_card.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -7,121 +9,30 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    const title = 'АвтоВАЗ';
+    return const MaterialApp(
+      home: CarList(),
+    );
+  }
+}
 
-    return MaterialApp(
-      title: title,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(title),
-        ),
-        body: GridView.count(
-          primary: false,
-          padding: const EdgeInsets.all(20),
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
+class CarList extends StatelessWidget {
+  const CarList({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Отечественный автопром', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
+        backgroundColor: Colors.brown[200],
+      ),
+      body: GridView.count(
           crossAxisCount: 2,
-          children: <Widget>[
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.blueAccent[100],
-              alignment: Alignment.bottomCenter,
-              child: const Text('Копейка', style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.blueAccent[100],
-              child: Column(
-                children: [
-                 Image.network("https://www.major-lada.ru/images/gallery/gallery_color_car/beliy_240_1.png"),
-                 Container(
-                   margin: const EdgeInsets.only(top: 20),
-                   child: const Text('Lada (ВАЗ) Granta I Рестайлинг', style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20
-                    )
-                    ),
-                 ),
-                ],
-              )
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.blueAccent[100],
-              child: const Text(''),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.blueAccent[100],
-              child: const Text(''),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.blueAccent[100],
-              child: const Text(''),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.blueAccent[100],
-              child: const Text(''),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.blueAccent[100],
-              child: const Text(''),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.blueAccent[100],
-              child: const Text(''),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.blueAccent[100],
-              child: const Text(''),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.blueAccent[100],
-              child: const Text(''),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.blueAccent[100],
-              child: const Text(''),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.blueAccent[100],
-              child: const Text(''),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.blueAccent[100],
-              child: const Text(''),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.blueAccent[100],
-              child: const Text(''),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.blueAccent[100],
-              child: const Text(''),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.blueAccent[100],
-              child: const Text(''),
-            ),
-          ],
-        ),
+          children: List.generate(
+              1, (index) => carList[index]
+          )
       ),
     );
   }
