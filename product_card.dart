@@ -26,10 +26,7 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => DetailedCard(productCard: carList[0])),
-        );
+        // Implement the logic to show the detailed view
       },
       child: Card(
         child: Column(
@@ -78,53 +75,12 @@ class ProductCard extends StatelessWidget {
 
 
 List<ProductCard> carList = [
-  const ProductCard(
-    title: 'Lada (ВАЗ) 2121 (4x4)',
-    price: '750 000 ₽',
-    imageUrl1: 'https://avatars.mds.yandex.net/get-autoru-vos/11396317/b8c47ea92cd535e3424ac8b7c74c80eb/456x342n',
-    imageUrl2: 'https://yastatic.net/naydex/autoru/1UY5JP044/96dde5Vr4ND/b1ODDax8AgAsGDxsGIHEYDBFXERuHuo8baYDq0SzJgRipt46SneIKTzcxidyTll2x6skuz8XG1IfiWZ7k70W0rkWQgnpLwHAPd-ubcjUkbI3wMtVadyktrauDmGMuyke7W6arNvgTjvsRh-krVcU-NU17Sd3B5BMwtRjqUs9CQ2iEInJ7KPBDOBG8WkWBsjr7YZVwbGcZjT0K8BjDTkomWuvE-UV55a1rcAS8aSSFHsbtKhlcoZbwgeXpqkNesYM50',
-    imageUrl3: 'https://yastatic.net/naydex/autoru/1UY5JP044/96dde5Vr4ND/b1ODDax8AgAsGDxsGIHEYDBFXERuHuo8baYDq0SzJgRipt46SrfJaTydBCF0Gk_iRWrwLj7DzxPeC3Mv0mhDU3kWV8h8ugABvF66rA5TEXK30tsXKcso9rEuDqbIvG_dbu9RadumnmztjJ-7d9GVu9-7Lia3Sx7MwVZt6kAxAkzkW4VDqGuNAWUDN2ceTcMr7gidib0TaDQzbItoyj3t3OlpkOCSaJm0Y80ZtiLYULtcda9j9U6fB0-TLi9Ad0WD5Q',
-    description: 'Продаю Lada (ВАЗ) 2121 4x4, цвет фиолетовый, 2019 года выпуска, с пробегом 17 800 километров. В ПТС два собственника. Объем двигателя 1,7 литра, мощность 83 лошадиных силы. Автомобиль в отличном состоянии, не требует никаких дополнительных вложений. Без ДТП. Использовался исключительно не в городской среде, эксплуатируется крайне редко. Второй автомобиль. Готов ответить на все вопросы по телефону или при личной встрече. Звоните!',
-    videoUrl: 'https://youtu.be/vuhvdBexD2U?si=Ek8qkj9j4qcoABSF',
-  )
-];
-
-
-class DetailedCard extends StatelessWidget {
-  final ProductCard productCard;
-  
-  const DetailedCard({
-    super.key,
-    required this.productCard,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Card(
-        child: ListView(
-          scrollDirection: Axis.vertical,
-          padding: const EdgeInsets.all(8),
-          children: <Widget>[
-            Text(productCard.title),
-            ListView(
-              scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.all(8),
-              children: [
-                Image.network(productCard.imageUrl1),
-                Image.network(productCard.imageUrl2),
-                Image.network(productCard.imageUrl3)
-              ],
-            ),
-            SingleChildScrollView(
-              child: Text(
-                productCard.description,
-                style: const TextStyle(fontSize: 16, color: Colors.black54)
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+const ProductCard(
+title: 'Lada (ВАЗ) 2121 (4x4)',
+price: '750 000 ₽',
+imageUrl1: 'https://avatars.mds.yandex.net/get-autoru-vos/11396317/b8c47ea92cd535e3424ac8b7c74c80eb/456x342n',
+imageUrl2: 'https://yastatic.net/naydex/autoru/1UY5JP044/96dde5Vr4ND/b1ODDax8AgAsGDxsGIHEYDBFXERuHuo8baYDq0SzJgRipt46SneIKTzcxidyTll2x6skuz8XG1IfiWZ7k70W0rkWQgnpLwHAPd-ubcjUkbI3wMtVadyktrauDmGMuyke7W6arNvgTjvsRh-krVcU-NU17Sd3B5BMwtRjqUs9CQ2iEInJ7KPBDOBG8WkWBsjr7YZVwbGcZjT0K8BjDTkomWuvE-UV55a1rcAS8aSSFHsbtKhlcoZbwgeXpqkNesYM50',
+imageUrl3: 'https://yastatic.net/naydex/autoru/1UY5JP044/96dde5Vr4ND/b1ODDax8AgAsGDxsGIHEYDBFXERuHuo8baYDq0SzJgRipt46SrfJaTydBCF0Gk_iRWrwLj7DzxPeC3Mv0mhDU3kWV8h8ugABvF66rA5TEXK30tsXKcso9rEuDqbIvG_dbu9RadumnmztjJ-7d9GVu9-7Lia3Sx7MwVZt6kAxAkzkW4VDqGuNAWUDN2ceTcMr7gidib0TaDQzbItoyj3t3OlpkOCSaJm0Y80ZtiLYULtcda9j9U6fB0-TLi9Ad0WD5Q',
+description: 'Продаю Lada (ВАЗ) 2121 4x4, цвет фиолетовый, 2019 года выпуска, с пробегом 17 800 километров. В ПТС два собственника. Объем двигателя 1,7 литра, мощность 83 лошадиных силы. Автомобиль в отличном состоянии, не требует никаких дополнительных вложений. Без ДТП. Использовался исключительно не в городской среде, эксплуатируется крайне редко. Второй автомобиль. Готов ответить на все вопросы по телефону или при личной встрече. Звоните!',
+videoUrl: 'https://youtu.be/vuhvdBexD2U?si=Ek8qkj9j4qcoABSF',
+)];
