@@ -1,7 +1,5 @@
-
 import 'package:flutter/material.dart';
-import 'package:kodirovanie4/product_card.dart';
-
+import 'package:flutter_application4/product_card.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,11 +26,20 @@ class CarList extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Отечественный автопром', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
         backgroundColor: Colors.brown[200],
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.shopping_cart),
+            onPressed: () {
+              // переходит на страницу с корзиной
+              print('Hello');
+            },
+          )
+        ],
       ),
       body: GridView.count(
           crossAxisCount: 2,
           children: List.generate(
-              1, (index) => carList[index]
+              10, (index) => carList[index]
           )
       ),
     );
